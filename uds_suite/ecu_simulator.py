@@ -69,8 +69,11 @@ class ECUSimulator:
         """
         Handle 0x10 - DiagnosticSessionControl.
 
+        Expected request:
+            10 <session_type>
+
         Positive response:
-            50 <session> <P2 high> <P2 low> <P2* high> <P2* low>
+            50 <session_type> <P2 high> <P2 low> <P2* high> <P2* low>
 
         Example:
             Request : 10 03
@@ -104,6 +107,12 @@ class ECUSimulator:
         """
         Handle 0x11 - ECUReset.
 
+        Expected request:
+            11 <reset_type>
+
+        Positive response:
+            51 <reset_type>
+
         Example:
             Request : 11 01
             Response: 51 01
@@ -132,9 +141,15 @@ class ECUSimulator:
         """
         Handle 0x22 - ReadDataByIdentifier.
 
+        Expected request:
+            22 <DID high byte> <DID low byte>
+
+        Positive response:
+            62 <DID high byte> <DID low byte> <data bytes>
+
         Example:
             Request : 22 F1 90
-            Response: 62 F1 90 <data bytes>
+            Response: 62 F1 90 <VIN ASCII bytes>
         """
 
         if len(request) != 3:
