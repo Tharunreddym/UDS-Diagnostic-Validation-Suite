@@ -1,0 +1,23 @@
+ecu:
+  name: "Simulated UDS ECU"
+  interface: "virtual"
+  channel: "uds_virtual_bus"
+  request_id: 0x7A0
+  response_id: 0x7A8
+
+timing:
+  request_timeout_seconds: 2
+  poll_interval_seconds: 0.001
+
+dids:
+  0xF190:
+    name: "Vehicle Identification Number"
+    data: "1HGCM82633A004352"
+
+  0xF187:
+    name: "Vehicle Manufacturer Spare Part Number"
+    data: "BOSCH-PN-2026"
+
+  0xF189:
+    name: "Software Version"
+    data: "SW-1.0.3"
